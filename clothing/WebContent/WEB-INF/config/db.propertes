@@ -1,5 +1,5 @@
 jdbc.driverClass = com.mysql.jdbc.Driver
-jdbc.jdbcUrl = jdbc:mysql://localhost:3306/logininfo?characterEncoding=UTF-8
+jdbc.jdbcUrl = jdbc:mysql://localhost:3306/clothing_db?characterEncoding=UTF-8
 jdbc.user = root
-jdbc.password = heshuitao
+jdbc.password = liudongshi
 jdbc.dialect = org.hibernate.dialect.MySQLDialect
