@@ -13,8 +13,7 @@
         <context:component-scan base-package="com.clothing.action"/>
         <!-- 默认自动加载注解适配器和注解映射器等 -->
         <mvc:annotation-driven/>
-        <!-- 加载外部文件：比如外部js query 图片  等等 -->
-        <mvc:default-servlet-handler/>
+        <mvc:default-servlet-handler />
         <!-- 视图解析器 -->
         <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
              <property name="prefix" value="/"></property>
