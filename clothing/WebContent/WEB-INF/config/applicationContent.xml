@@ -33,7 +33,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
         <!-- 数据连接池 -->
         <property name="dataSource" ref="dataSource"/>
         <!-- 加载mybatis全局配置文件 -->
-       <!--  <property name="configLocation" value="/WEB-INF/config/mybatis/SqlMapConfig.xml"/> -->
+        <!-- <property name="configLocation" value="/WEB-INF/config/mybatis/SqlMapConfig.xml"/> -->
+
      </bean>
      
      <!-- mapper扫描器 -->
@@ -64,5 +65,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
     </aop:config>
     
     <!-- 接口实现类 id：类名    class：路径 -->
+
    <bean id="GoogsLoadingImplClass" class="com.clothing.service.GoogsLoadingImplClass"/>
+    <!-- <bean id="Goods_details" class="com.service.UserImplClass"/> -->
 </beans>     
