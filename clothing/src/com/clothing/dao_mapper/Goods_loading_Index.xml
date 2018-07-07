@@ -6,12 +6,12 @@
     <!-- 查询精选所有商品  type: -->
     <resultMap type="com.clothing.pojo.Recommend" id="selectrecommendAll">
         <id property="re_id" column="re_id" javaType="java.lang.Integer"/>
-        <association property="goods_info" javaType="com.clothing.pojo.Goods_Info"> <!-- 一对一 -->
+        <collection property="goods_info" ofType="com.clothing.pojo.Goods_Info"> <!-- 一对多 -->
             <id property="g_id" column="g_id" javaType="java.lang.Integer"/>
             <result property="g_name" column="g_name" javaType="java.lang.String"/>
-            <result property="g_price" column="g_price" javaType="java.lang.String"/>
+            <result property="g_price" column="g_price" javaType="java.lang.Double"/>
             <result property="g_img" column="g_img" javaType="java.lang.String"/>
-        </association>
+        </collection>
     </resultMap>
 	<select id="recommendGoodsAll" resultMap="selectrecommendAll">
 	   select recommend.re_id,
@@ -19,7 +19,8 @@
 	          goods_info.g_name,
 	          goods_info.g_price,
 	          goods_info.g_img 
-              from recommend  
+	          
+               from recommend  
               join goods_info 
               on recommend.re_goods_id = goods_info.g_id
 	</select>

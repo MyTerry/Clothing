@@ -16,7 +16,7 @@
         <mvc:default-servlet-handler />
         <!-- 视图解析器 -->
         <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-             <property name="prefix" value="/"></property>
+             <property name="prefix" value="page/"></property>
              <property name="suffix" value=".jsp"></property> 
         </bean>
 </beans>      
