@@ -92,7 +92,7 @@ public class Goods_Info {
 	@Override
 	public String toString() {
 		return "Goods_Info [g_id=" + g_id + ", g_name=" + g_name + ", g_price="
-				+ g_price + ", g_im=" + g_img + ", g_discount=" + g_discount
+				+ g_price + ", g_img=" + g_img + ", g_discount=" + g_discount
 				+ ", g_describe=" + g_describe + ", types=" + types
 				+ ", g_original=" + g_original + "]";
 	}

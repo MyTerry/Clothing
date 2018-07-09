@@ -24,4 +24,32 @@
               join goods_info 
               on recommend.re_goods_id = goods_info.g_id
 	</select>
+	<!-- 查询女装 -->
+	<resultMap type="com.clothing.pojo.Goods_Info" id="femaleAll">
+	     <id property="g_id" column="g_id" javaType="java.lang.Integer"/>
+	     <result property="g_name" column="g_name" javaType="java.lang.String"/>
+	     <result property="g_img" column="g_img" javaType="java.lang.String"/>
+	     <result property="g_discount" column="g_discount" javaType="java.lang.Float"/>
+	     <result property="g_describe" column="g_describe" javaType="java.lang.String"/>
+	     <association property="types" javaType="com.clothing.pojo.Types">
+	         <id property="t_id" column="t_id" javaType="java.lang.Integer"/>
+	         <result property="t_name" column="t_name" javaType="java.lang.String"/>
+	     </association>
+	</resultMap>
+	<select id="SelectfemaleAll" parameterType="com.clothing.pojo.Types" resultMap="femaleAll">
+	    select g_id,
+	    g_name,
+	    g_img,
+	    g_discount,
+	    g_describe,
+	    t_id,
+	    t_name 
+	    from goods_info,types 
+	    where goods_info.g_types_id=types.t_id and types.t_name=#{t_name}
+	</select>
+	<!-- 查询：省 -->
+    <select id="parentidAll" parameterType="int" resultType="com.clothing.pojo.Tbl_Province">
+	   select * from tbl_province where parentid=#{id}
+	</select> 
+	
 </mapper>
