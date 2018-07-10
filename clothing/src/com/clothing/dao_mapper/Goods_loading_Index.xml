@@ -36,7 +36,7 @@
 	         <result property="t_name" column="t_name" javaType="java.lang.String"/>
 	     </association>
 	</resultMap>
-	<select id="SelectfemaleAll" parameterType="com.clothing.pojo.Types" resultMap="femaleAll">
+	<select id="SelectfemaleAll" parameterType="java.lang.String" resultMap="femaleAll">
 	    select g_id,
 	    g_name,
 	    g_img,
@@ -45,11 +45,38 @@
 	    t_id,
 	    t_name 
 	    from goods_info,types 
-	    where goods_info.g_types_id=types.t_id and types.t_name=#{t_name}
+	    where goods_info.g_types_id=types.t_id and types.t_name=#{value}
 	</select>
 	<!-- 查询：省 -->
     <select id="parentidAll" parameterType="int" resultType="com.clothing.pojo.Tbl_Province">
 	   select * from tbl_province where parentid=#{id}
 	</select> 
-	
+	<!-- 查询购物出内容 -->
+	<resultMap type="com.clothing.pojo.ShopPing" id="shopping">
+	   <id property="sh_id" column="sh_id" javaType="java.lang.Integer"/>
+	   <result property="sh_size" column="sh_size" javaType="java.lang.String"/>
+	   <result property="sh_number" column="sh_number" javaType="java.lang.Integer"/>
+	   <association property="u" javaType="com.clothing.pojo.Users">
+	       <id property="u_Id" column="u_Id" javaType="java.lang.Integer"/>
+	       <result property="u_name" column="u_name" javaType="java.lang.Integer"/>
+	   </association> 
+	   <collection property="Goods_Infos" ofType="com.clothing.pojo.Goods_Info">
+	        <id property="g_id" column="g_id" javaType="java.lang.Integer"/>
+	        <result property="g_name" column="g_name" javaType="java.lang.String"/>
+	        <result property="g_price" column="g_price" javaType="java.lang.Double"/>
+	        <result property="g_img" column="g_img" javaType="java.lang.String"/>
+	   </collection>
+	</resultMap>
+	<select id="UserShoppingAll" parameterType="int" resultMap="shopping">
+	   select sh_id,sh_size,sh_number,g_id,g_name,g_price,g_img,u_Id 
+	    	from shopping,goods_info,users 
+            WHERE shopping.sh_user_id=users.u_Id 
+			and shopping.sh_goods_id=goods_info.g_id 
+			AND users.u_Id=#{id}
+	</select>
+	<!-- 添加购物车 -->
+	<insert id="saveShopping" parameterType="com.clothing.pojo.ShopPing">
+	   insert into shopping(sh_data,sh_size,sh_number,sh_user_id,sh_goods_id) 
+	   values(#{sh_data},#{sh_size},#{sh_number},#{sh_user_id},#{sh_goods_id})
+	</insert>
 </mapper>
