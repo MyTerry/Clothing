@@ -31,11 +31,15 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
      <!-- 创建sqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 数据连接池 -->
-        <property name="dataSource" ref="dataSource"/>
-        <!-- 加载mybatis全局配置文件 -->
-        <!-- <property name="configLocation" value="/WEB-INF/config/mybatis/SqlMapConfig.xml"/> -->
-
+        <property name="dataSource" ref="dataSource"/>    
      </bean>
+     
+     
+      <!-- DAO接口所在包名，Spring会自动查找之中的类 -->  
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <!-- 扫描所有的DAO接口的实现，加入到ioc容器中 -->  
+        <property name="basePackage" value="com.clothing.dao_mapper" />     
+    </bean> 
      
      <!-- mapper扫描器 -->
      <bean  class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -68,4 +72,6 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 
    <bean id="GoogsLoadingImplClass" class="com.clothing.service.GoogsLoadingImplClass"/>
     <!-- <bean id="Goods_details" class="com.service.UserImplClass"/> -->
+    <context:component-scan base-package="com.clothing.dao_mapper"/>
+    <context:component-scan base-package="com.clothing.service"/>
 </beans>     
