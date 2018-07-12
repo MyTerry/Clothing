@@ -14,7 +14,7 @@ hello word !
     <input type="submit"/>
 </form>
 
-<%-- ${value} --%>
+
 <br/>--------------------
 <c:forEach items="${value}" var="val">
 	<c:forEach items="${val.goods_info}" var="item">
