@@ -1,9 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.clothing.dao_mapper">
-  
-  <select id="getGoods_Info">
-     select * from goods_info where g_id =#{g_id}
-  </select>
+<mapper namespace="com.clothing.dao_mapper.Goods_details">
 
+  <resultMap type="com.clothing.pojo.Goods_Info" id="goodsInfo">
+     <id column="g_id" jdbcType="INTEGER" property="g_id"/>
+     <result column="g_name" jdbcType="VARCHAR" property="g_name"/>
+     <result column="g_price" jdbcType="DOUBLE" property="g_price"/>
+     <result column="g_im" jdbcType="VARCHAR" property="g_img"/>
+     <result column="g_discount" jdbcType="FLOAT" property="g_discount"/>
+     <result column="g_describe" jdbcType="VARCHAR" property="g_describe"/>
+     <result column="g_original" jdbcType="DOUBLE" property="g_original"/>
+     
+     <collection property="Goods_imgs" ofType="com.clothing.pojo.Goods_img">
+        <id property="gi_id" column="gi_id" javaType="java.lang.Integer"/>
+        <result column="gi_url" property="gi_url"/>
+     </collection>
+     
+     <collection property="Comments" ofType="com.clothing.pojo.Comment">
+        <id column="co_id" property="co_id" javaType="java.lang.Integer"/>
+        <result column="co_context" property="co_context"/>
+        <result column="co_data" property="co_data"/>
+        <association property="user" javaType="com.clothing.pojo.Users">
+            <id column="u_Id" property="u_Id" javaType="java.lang.Integer"/>
+            <result column="u_Tel" property="u_Tel"/>
+            <result column="u_Pass" property="u_Pass"/>
+            <result column="u_Name" property="u_Name"/>
+            <result column="u_Head" property="u_Head"/>
+            <result column="u_Sex" property="u_Sex"/>
+            <result column="u_Address" property="u_Address"/>
+        </association>
+     </collection>
+  </resultMap>
+  
+  <!-- <select id="selectGoods" parameterType="int" resultType="com.clothing.pojo.Goods_Info">
+     select * from goods_info where g_id =#{g_id}
+  </select> -->
+ <!-- 商品详情查询 -->
+  <select id="selectinfo_img" parameterType="int" resultMap="goodsInfo">
+    select *from goods_info gi join goods_img gim
+	on gi.g_id=gim.g_id
+	join comment cm
+	on cm.co_goods_id=gi.g_id
+	join users us 
+	on cm.co_user_id=us.u_Id
+	where gi.g_id=#{gi.g_id}
+  </select>
+  
+  <!-- 尺码的查询 -->
+  <select id="selectsize" resultType="com.clothing.pojo.Size">
+       select * from size
+  </select>
+  
 </mapper>

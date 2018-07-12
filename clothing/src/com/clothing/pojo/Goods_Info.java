@@ -1,23 +1,34 @@
 package com.clothing.pojo;
+
+import java.util.List;
+
 //商品详情表
 public class Goods_Info {
 	private int g_id;
 	private String g_name;
-	private String g_price;
+	private double g_price;
 	private String g_im;
 	private float g_discount;
 	private String g_describe;
 	// 关联类型表
 	private Types types;
 	private double g_original;
-
+	
+	private List<Goods_img> Goods_imgs;
+	
+	private List<Comment> Comments;
+	
+	
+	
+	
 	public Goods_Info() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Goods_Info(int g_id, String g_name, String g_price, String g_im,
-			float g_discount, String g_describe, Types types, double g_original) {
+	public Goods_Info(int g_id, String g_name, double g_price, String g_im,
+			float g_discount, String g_describe, Types types,
+			double g_original, List<Goods_img> goods_imgs,
+			List<Comment> comments) {
 		super();
 		this.g_id = g_id;
 		this.g_name = g_name;
@@ -27,6 +38,31 @@ public class Goods_Info {
 		this.g_describe = g_describe;
 		this.types = types;
 		this.g_original = g_original;
+		Goods_imgs = goods_imgs;
+		Comments = comments;
+	}
+
+
+
+
+
+	public List<Comment> getComments() {
+		return Comments;
+	}
+	public void setComments(List<Comment> comments) {
+		Comments = comments;
+	}
+
+
+
+
+
+	public List<Goods_img> getGoods_imgs() {
+		return Goods_imgs;
+	}
+
+	public void setGoods_imgs(List<Goods_img> goods_imgs) {
+		Goods_imgs = goods_imgs;
 	}
 
 	public int getG_id() {
@@ -45,11 +81,11 @@ public class Goods_Info {
 		this.g_name = g_name;
 	}
 
-	public String getG_price() {
+	public double getG_price() {
 		return g_price;
 	}
 
-	public void setG_price(String g_price) {
+	public void setG_price(double g_price) {
 		this.g_price = g_price;
 	}
 
@@ -92,13 +128,13 @@ public class Goods_Info {
 	public void setG_original(double g_original) {
 		this.g_original = g_original;
 	}
-
 	@Override
 	public String toString() {
 		return "Goods_Info [g_id=" + g_id + ", g_name=" + g_name + ", g_price="
 				+ g_price + ", g_im=" + g_im + ", g_discount=" + g_discount
 				+ ", g_describe=" + g_describe + ", types=" + types
-				+ ", g_original=" + g_original + "]";
+				+ ", g_original=" + g_original + ", Goods_imgs=" + Goods_imgs
+				+ ", Comments=" + Comments + "]";
 	}
 
 }

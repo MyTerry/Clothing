@@ -16,5 +16,8 @@
         <!-- 批量扫描包 -->
 		<package name="com.clothing.pojo"/>
 	</typeAliases>
+	<mappers >
+	   <mapper resource="classpath:Goods_details.xml"/>
+	</mappers>
 	
 </configuration>

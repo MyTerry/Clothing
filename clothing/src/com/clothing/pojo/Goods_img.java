@@ -6,20 +6,6 @@ public class Goods_img {
 	// 关联商品
 	private Goods_Info goods_info;
 
-	
-	
-	public Goods_img() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Goods_img(int gi_id, String gi_url, Goods_Info goods_info) {
-		super();
-		this.gi_id = gi_id;
-		this.gi_url = gi_url;
-		this.goods_info = goods_info;
-	}
-
 	public int getGi_id() {
 		return gi_id;
 	}
@@ -43,11 +29,24 @@ public class Goods_img {
 	public void setGoods_info(Goods_Info goods_info) {
 		this.goods_info = goods_info;
 	}
+	
+	public Goods_img() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Goods_img(int gi_id, String gi_url, Goods_Info goods_info) {
+		super();
+		this.gi_id = gi_id;
+		this.gi_url = gi_url;
+		this.goods_info = goods_info;
+	}
 
 	@Override
 	public String toString() {
 		return "Goods_img [gi_id=" + gi_id + ", gi_url=" + gi_url
 				+ ", goods_info=" + goods_info + "]";
 	}
+	
 
 }
