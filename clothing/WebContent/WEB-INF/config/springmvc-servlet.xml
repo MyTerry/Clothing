@@ -14,9 +14,15 @@
         <mvc:annotation-driven/>
         <!-- 加载控制层的方法 -->
         <context:component-scan base-package="com.clothing.action"/>
+<<<<<<< HEAD
+=======
+        <!-- 默认自动加载注解适配器和注解映射器等 -->
+        <mvc:annotation-driven/>
+        <mvc:default-servlet-handler />
+>>>>>>> 28eb277e9970403892c673f4328aa877dd562129
         <!-- 视图解析器 -->
         <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-             <property name="prefix" value="/"></property>
+             <property name="prefix" value="page/"></property>
              <property name="suffix" value=".jsp"></property> 
         </bean>
 

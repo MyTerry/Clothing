@@ -6,8 +6,13 @@ import java.util.List;
 public class Goods_Info {
 	private int g_id;
 	private String g_name;
+<<<<<<< HEAD
 	private double g_price;
 	private String g_im;
+=======
+	private Double g_price;
+	private String g_img;
+>>>>>>> 28eb277e9970403892c673f4328aa877dd562129
 	private float g_discount;
 	private String g_describe;
 	// 关联类型表
@@ -22,18 +27,21 @@ public class Goods_Info {
 	
 	
 	public Goods_Info() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
+<<<<<<< HEAD
 	public Goods_Info(int g_id, String g_name, double g_price, String g_im,
 			float g_discount, String g_describe, Types types,
 			double g_original, List<Goods_img> goods_imgs,
 			List<Comment> comments) {
+=======
+	public Goods_Info(int g_id, String g_name, Double g_price, String g_img,
+			float g_discount, String g_describe, Types types, double g_original) {
+>>>>>>> 28eb277e9970403892c673f4328aa877dd562129
 		super();
 		this.g_id = g_id;
 		this.g_name = g_name;
 		this.g_price = g_price;
-		this.g_im = g_im;
+		this.g_img = g_img;
 		this.g_discount = g_discount;
 		this.g_describe = g_describe;
 		this.types = types;
@@ -65,6 +73,14 @@ public class Goods_Info {
 		Goods_imgs = goods_imgs;
 	}
 
+
+
+	public Double getG_price() {
+		return g_price;
+	}
+	public void setG_price(Double g_price) {
+		this.g_price = g_price;
+	}
 	public int getG_id() {
 		return g_id;
 	}
@@ -80,6 +96,7 @@ public class Goods_Info {
 	public void setG_name(String g_name) {
 		this.g_name = g_name;
 	}
+<<<<<<< HEAD
 
 	public double getG_price() {
 		return g_price;
@@ -91,10 +108,14 @@ public class Goods_Info {
 
 	public String getG_im() {
 		return g_im;
+=======
+	public String getG_img() {
+		return g_img;
+>>>>>>> 28eb277e9970403892c673f4328aa877dd562129
 	}
 
-	public void setG_im(String g_im) {
-		this.g_im = g_im;
+	public void setG_img(String g_img) {
+		this.g_img = g_img;
 	}
 
 	public float getG_discount() {
@@ -131,7 +152,7 @@ public class Goods_Info {
 	@Override
 	public String toString() {
 		return "Goods_Info [g_id=" + g_id + ", g_name=" + g_name + ", g_price="
-				+ g_price + ", g_im=" + g_im + ", g_discount=" + g_discount
+				+ g_price + ", g_img=" + g_img + ", g_discount=" + g_discount
 				+ ", g_describe=" + g_describe + ", types=" + types
 				+ ", g_original=" + g_original + ", Goods_imgs=" + Goods_imgs
 				+ ", Comments=" + Comments + "]";

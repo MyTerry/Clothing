@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.clothing.dao_mapper.Goods_loading_Index">
+    <!-- 查询精选所有商品  type: -->
+    <resultMap type="com.clothing.pojo.Recommend" id="selectrecommendAll">
+        <id property="re_id" column="re_id" javaType="java.lang.Integer"/>
+        <collection property="goods_info" ofType="com.clothing.pojo.Goods_Info"> <!-- 一对多 -->
+            <id property="g_id" column="g_id" javaType="java.lang.Integer"/>
+            <result property="g_name" column="g_name" javaType="java.lang.String"/>
+            <result property="g_price" column="g_price" javaType="java.lang.Double"/>
+            <result property="g_img" column="g_img" javaType="java.lang.String"/>
+        </collection>
+    </resultMap>
+	<select id="recommendGoodsAll" resultMap="selectrecommendAll">
+	   select recommend.re_id,
+	          goods_info.g_id,
+	          goods_info.g_name,
+	          goods_info.g_price,
+	          goods_info.g_img 
+	          
+               from recommend  
+              join goods_info 
+              on recommend.re_goods_id = goods_info.g_id
+	</select>
+	<!-- 查询女装 -->
+	<resultMap type="com.clothing.pojo.Goods_Info" id="femaleAll">
+	     <id property="g_id" column="g_id" javaType="java.lang.Integer"/>
+	     <result property="g_name" column="g_name" javaType="java.lang.String"/>
+	     <result property="g_img" column="g_img" javaType="java.lang.String"/>
+	     <result property="g_discount" column="g_discount" javaType="java.lang.Float"/>
+	     <result property="g_describe" column="g_describe" javaType="java.lang.String"/>
+	     <association property="types" javaType="com.clothing.pojo.Types">
+	         <id property="t_id" column="t_id" javaType="java.lang.Integer"/>
+	         <result property="t_name" column="t_name" javaType="java.lang.String"/>
+	     </association>
+	</resultMap>
+	<select id="SelectfemaleAll" parameterType="java.lang.String" resultMap="femaleAll">
+	    select g_id,
+	    g_name,
+	    g_img,
+	    g_discount,
+	    g_describe,
+	    t_id,
+	    t_name 
+	    from goods_info,types 
+	    where goods_info.g_types_id=types.t_id and types.t_name=#{value}
+	</select>
+	<!-- 查询：省 -->
+    <select id="parentidAll" parameterType="int" resultType="com.clothing.pojo.Tbl_Province">
+	   select * from tbl_province where parentid=#{id}
+	</select> 
+	<!-- 查询购物出内容 -->
+	<resultMap type="com.clothing.pojo.ShopPing" id="shopping">
+	   <id property="sh_id" column="sh_id" javaType="java.lang.Integer"/>
+	   <result property="sh_size" column="sh_size" javaType="java.lang.String"/>
+	   <result property="sh_number" column="sh_number" javaType="java.lang.Integer"/>
+	   <association property="u" javaType="com.clothing.pojo.Users">
+	       <id property="u_Id" column="u_Id" javaType="java.lang.Integer"/>
+	       <result property="u_name" column="u_name" javaType="java.lang.Integer"/>
+	   </association> 
+	   <collection property="Goods_Infos" ofType="com.clothing.pojo.Goods_Info">
+	        <id property="g_id" column="g_id" javaType="java.lang.Integer"/>
+	        <result property="g_name" column="g_name" javaType="java.lang.String"/>
+	        <result property="g_price" column="g_price" javaType="java.lang.Double"/>
+	        <result property="g_img" column="g_img" javaType="java.lang.String"/>
+	   </collection>
+	</resultMap>
+	<select id="UserShoppingAll" parameterType="int" resultMap="shopping">
+	   select sh_id,sh_size,sh_number,g_id,g_name,g_price,g_img,u_Id 
+	    	from shopping,goods_info,users 
+            WHERE shopping.sh_user_id=users.u_Id 
+			and shopping.sh_goods_id=goods_info.g_id 
+			AND users.u_Id=#{id}
+	</select>
+	<!-- 添加购物车 -->
+	<insert id="saveShopping" parameterType="com.clothing.pojo.ShopPing">
+	   insert into shopping(sh_data,sh_size,sh_number,sh_user_id,sh_goods_id) 
+	   values(#{sh_data},#{sh_size},#{sh_number},#{sh_user_id},#{sh_goods_id})
+	</insert>
+</mapper>

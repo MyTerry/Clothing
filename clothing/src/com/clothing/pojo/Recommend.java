@@ -8,8 +8,7 @@ public class Recommend {
 	private List<Goods_Info> goods_info;
 
 	public Recommend() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Recommend(int re_id, List<Goods_Info> goods_info) {

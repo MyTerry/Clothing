@@ -29,13 +29,17 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
      </bean>
      
      <!-- 创建sqlSessionFactory -->
-     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 数据连接池 -->
         <property name="dataSource" ref="dataSource"/>
         <!-- 加载mybatis全局配置文件 -->
         <!-- <property name="configLocation" value="/WEB-INF/config/mybatis/SqlMapConfig.xml"/> -->
+<<<<<<< HEAD
         <!--扫描 XXXmapper.xml映射文件,配置扫描的路径-->  
        
+=======
+
+>>>>>>> 28eb277e9970403892c673f4328aa877dd562129
      </bean>
      
      
@@ -73,6 +77,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
     </aop:config>
     
     <!-- 接口实现类 id：类名    class：路径 -->
+
+   <bean id="GoogsLoadingImplClass" class="com.clothing.service.GoogsLoadingImplClass"/>
     <!-- <bean id="Goods_details" class="com.service.UserImplClass"/> -->
     <context:component-scan base-package="com.clothing.dao_mapper"/>
     <context:component-scan base-package="com.clothing.service"/>
