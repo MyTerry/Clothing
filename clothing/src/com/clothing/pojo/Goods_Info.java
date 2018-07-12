@@ -15,6 +15,29 @@ public class Goods_Info {
 	private double g_original;
 	private List<Goods_img> Goods_imgs;
 	private List<Comment> Comments;
+	
+	
+	public Goods_Info() {
+	}
+	
+	public Goods_Info(int g_id, String g_name, Double g_price, String g_img,
+			float g_discount, String g_describe, Types types,
+			double g_original, List<Goods_img> goods_imgs,
+			List<Comment> comments) {
+		super();
+		this.g_id = g_id;
+		this.g_name = g_name;
+		this.g_price = g_price;
+		this.g_img = g_img;
+		this.g_discount = g_discount;
+		this.g_describe = g_describe;
+		this.types = types;
+		this.g_original = g_original;
+		Goods_imgs = goods_imgs;
+		Comments = comments;
+	}
+	
+	
 	public int getG_id() {
 		return g_id;
 	}
@@ -83,28 +106,6 @@ public class Goods_Info {
 				+ ", g_original=" + g_original + ", Goods_imgs=" + Goods_imgs
 				+ ", Comments=" + Comments + "]";
 	}
-	public Goods_Info(int g_id, String g_name, Double g_price, String g_img,
-			float g_discount, String g_describe, Types types,
-			double g_original, List<Goods_img> goods_imgs,
-			List<Comment> comments) {
-		super();
-		this.g_id = g_id;
-		this.g_name = g_name;
-		this.g_price = g_price;
-		this.g_img = g_img;
-		this.g_discount = g_discount;
-		this.g_describe = g_describe;
-		this.types = types;
-		this.g_original = g_original;
-		Goods_imgs = goods_imgs;
-		Comments = comments;
-	}
-	public Goods_Info() {
-	}
-	
-	
-	
-	
-	
+		
 
 }

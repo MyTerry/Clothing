@@ -14,6 +14,8 @@ public class Goods_service {
    public Goods_Info selectAll() {
 		// TODO Auto-generated method stub
 	   System.out.println("’‚¿Ô «Service");
+	   Goods_Info g=Goods_interface.selectinfo_img(1);
+	   System.out.println(g);
 		return Goods_interface.selectinfo_img(1);
 	}
 }

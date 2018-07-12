@@ -71,6 +71,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
     <!-- 接口实现类 id：类名    class：路径 -->
 
    <bean id="GoogsLoadingImplClass" class="com.clothing.service.GoogsLoadingImplClass"/>
+   
     <!-- <bean id="Goods_details" class="com.service.UserImplClass"/> -->
     <context:component-scan base-package="com.clothing.dao_mapper"/>
     <context:component-scan base-package="com.clothing.service"/>

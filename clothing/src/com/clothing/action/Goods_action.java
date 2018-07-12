@@ -31,6 +31,7 @@ public class Goods_action {
     @RequestMapping(value="name/ook",method=RequestMethod.GET)
 	public String resultget(Model model){
     	/*String str=null;*/
+    	System.out.println("ACTION");
     	Goods_Info goods=Goods_service.selectAll();
     	model.addAttribute("goods",goods);
     	System.out.println(goods);
@@ -47,6 +48,6 @@ public class Goods_action {
     	{
     		System.out.println(s);
     	} */
-    	return "chaungzhi";
+    	return "login";
     }
 }

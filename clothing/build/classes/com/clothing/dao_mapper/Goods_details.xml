@@ -43,7 +43,7 @@
 	on cm.co_goods_id=gi.g_id
 	join users us 
 	on cm.co_user_id=us.u_Id
-	where gi.g_id=#{gi.g_id}
+	where gi.g_id=#{id}
   </select>
   
   <!-- 尺码的查询 -->
