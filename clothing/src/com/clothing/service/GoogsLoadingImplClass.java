@@ -17,8 +17,6 @@ public class GoogsLoadingImplClass implements GoogsLoadingImpl{
 	//查询精品信息接口实现方法
 	public List<Recommend> recommendGoodsAll() throws Exception {
         System.out.println("进入service");
-        List<Recommend> list=goods_loading_Index.recommendGoodsAll();
-        		System.out.println(list.toString());
 		return goods_loading_Index.recommendGoodsAll();
 	}
 	//查询女装信息接口实现方法

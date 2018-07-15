@@ -10,5 +10,9 @@
 商品名称${goods.g_name}<br/>
 商品价格${goods.g_price}<br/>
 图片地址${goods.getGoods_imgs().get(0).getGi_url()}
+
+<form action="../text" method="POST">
+   <input type="submit"/>
+</form>
 </body>
 </html>

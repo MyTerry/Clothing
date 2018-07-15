@@ -1,13 +1,17 @@
 package com.clothing.action;
  
+import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.clothing.pojo.Goods_Info;
 import com.clothing.pojo.Recommend;
@@ -27,12 +31,13 @@ public class GoogsLoadingAction {
     	return "index";
     }
 	@RequestMapping("female")  //商品分类数据加载
-	public String femaleAll(String name) throws Exception{
+	public @ResponseBody List<Goods_Info> femaleAll(String name,ModelMap map,HttpServletResponse response) throws Exception{
 		System.out.println("进入femaleAll方法");
-	    name="女装";
+		name = URLDecoder.decode(name, "utf-8");
+	    System.out.println(name);
 		List<Goods_Info> gInfos=googsLoadingImpl.SelectfemaleAll(name);
 		System.out.println(gInfos);
-		return "index";
+		return gInfos;
     }
 	@RequestMapping("parentid")  //加载地区的三级联动
 	public String parentidString() throws Exception{
